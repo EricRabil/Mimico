@@ -1,0 +1,7 @@
+@import "./foundation/foundation";
+
+div.text-view-inner {
+    &#tv-home {
+        @extend .grid;
+    }
+}
