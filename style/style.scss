@@ -1,12 +1,13 @@
 @import "./foundation/foundation";
 $sidebar-width: 50px;
+$explorer-width: 300px;
 
 .root-container {
     @extend .grid, .hw-max;
     // fills the screen
     position: fixed;
     // icon, explorer and main view widths
-    grid-template-columns: $sidebar-width 300px auto;
+    grid-template-columns: $sidebar-width $explorer-width auto;
 }
 
 .root-grid-item {
@@ -30,6 +31,69 @@ $sidebar-width: 50px;
     }
 }
 
+@media(max-width: 999px) {
+    .sidebar {
+        display: none;
+    }
+
+    .root-container {
+        grid-template-columns: ($explorer-width - 50px) auto;
+    }
+}
+
+@media(max-width: 749px) {
+    .root-container {
+        grid-template-columns: auto;
+        grid-template-rows: min-content auto;
+    }
+
+    .explorer {
+        height: min-content;
+        grid-template-rows: 43px auto !important;
+    }
+
+    .text-view-line-count {
+        display: none;
+    }
+
+    .nav-burger {
+        display: inherit;
+        vertical-align: text-top;
+        float: right;
+        padding: 4px;
+    }
+
+    .credits {
+        display: initial;
+        bottom: 0;
+        right: 0;
+        position: fixed;
+    }
+}
+
+@media(min-width: 750px) {
+    .nav-burger {
+        display: none;
+    }
+}
+
+// credits to eric rabil
+.credits {
+    @extend .title, .monospace, .noselect;
+    & > a {
+        text-decoration: none;
+        transition: color 0.25s ease;
+        color: rgba(255, 255, 255, 0.5);
+        &:hover {
+            color: rgba(255, 255, 255, 1.0);
+        }
+    }
+}
+
+.nav-burger:hover {
+    cursor: pointer;
+}
+
 .explorer {
     @extend .root-grid-item, .noselect, .grid;
     background-color: map-get($colors, secondary);
@@ -38,6 +102,7 @@ $sidebar-width: 50px;
         @extend .title;
         font-size: 13px;
     }
+    // file list section
     & > ul.explorer-list {
         margin: 0;
         padding: 0;
@@ -46,22 +111,12 @@ $sidebar-width: 50px;
             font-size: 13px;
             cursor: pointer;
             & > .explorer-item-image {
+                // fits the image to be in line with the image
                 @extend .image-fix;
                 height: 16px;
             }
             &:hover {
                 @extend .secondary-active;
-            }
-        }
-    }
-    & > .explorer-credits {
-        @extend .title, .monospace;
-        color: darkgray;
-        & > a {
-            text-decoration: none;
-            color: darkgray;
-            &:hover {
-                color: lightgray;
             }
         }
     }
@@ -71,25 +126,32 @@ $sidebar-width: 50px;
     @extend .root-grid-item, .grid;
     background-color: map-get($colors, tertiary);
     grid-template-rows: 40px auto;
+    &.text-view-max {
+        grid-row: 1 / 3;
+    }
+    // the page title view
     & > .text-view-title {
         @extend .noselect;
         font-size: 13px;
         display: inline;
         background-color: map-get($colors, secondary);
-        & > .text-view-title-inner {
+        // innertext
+        & .text-view-title-inner {
             // when not selected
             background-color: map-get($colors, tertiary-active);
             padding: 11px 12px;
             display: inline-block;
+            // file image
             & > img.text-view-title-image {
                 @extend .image-fix;
                 height: 16px;
             }
         }
-        & > .text-view-title-inner.text-view-title-inner-active {
+        & .text-view-title-inner.text-view-title-inner-active {
             @extend .tertiary;
         }
     }
+    // actual content
     & > .text-view-inner {
         @extend .grid, .monospace;
         grid-template-columns: 50px auto;
