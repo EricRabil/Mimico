@@ -33,10 +33,19 @@ div {
     }
 }
 
+.text-view-inner {
+    padding-bottom: 20px;
+}
+
 .text-view-inner p:not(.er-home-title) {
     text-align: center;
     margin: 0 20px;
     word-wrap: break-word;
+}
+
+.text-view-inner a {
+    color: darkgray;
+    text-decoration: none;
 }
 
 .code {
@@ -48,8 +57,4 @@ div {
     padding: 10px;
     border-radius: 5px;
     border: 1px solid map-get($colors, secondary-active);
-    & > a {
-        color: darkgray;
-        text-decoration: none;
-    }
 }
