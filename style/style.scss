@@ -154,6 +154,9 @@ $explorer-width: 300px;
     // actual content
     & > .text-view-inner {
         @extend .grid, .monospace;
+        &.no-linecount {
+            grid-template-columns: auto;
+        }
         grid-template-columns: 50px auto;
         & > .text-view-line-count {
             @extend .noselect;
