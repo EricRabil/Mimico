@@ -12,7 +12,9 @@
     const resetResponsiveNav = () => {
         suite.navIsCollapsed = suite.viewportWidth < 750;
     }
+    const toggleExplorer = (hidden) => document.getElementById("explorer").style.display = hidden ? "none" : "grid";
     let hiddenResponsiveState = false;
+    let didRunCompatibilityModeForSession = false;
     const suite = {
         /**
          * Switch to a given page
@@ -44,11 +46,22 @@
                 hiddenResponsiveState = this.navIsCollapsed;
             });
             window.addEventListener("resize", () => {
-                if (this.navIsCollapsed && this.viewportWidth >= 750) {
-                    this.navIsCollapsed = false;
+                if (this.viewportWidth >= 750) {
+                    if (this.navIsCollapsed) {
+                        this.navIsCollapsed = false;
+                    }
+                    didRunCompatibilityModeForSession = false;
                 }
-                if (!this.navIsCollapsed && this.viewportWidth < 750 && hiddenResponsiveState) {
-                    this.navIsCollapsed = true;
+                if (!this.navIsCollapsed && this.viewportWidth < 750) {
+                    if (hiddenResponsiveState) {
+                        this.navIsCollapsed = true;
+                    }
+                    if (this.shouldUseCompatibilityMode && !didRunCompatibilityModeForSession) {
+                        console.debug("Running compatibility reflow");
+                        this.navIsCollapsed = !this.navIsCollapsed;
+                        setTimeout(() => this.navIsCollapsed = !this.navIsCollapsed, 0);
+                        didRunCompatibilityModeForSession = true;
+                    }
                 }
             });
         },
@@ -56,7 +69,7 @@
             return document.getElementById("explorer").style.display === "none";
         },
         set navIsCollapsed(collapsed) {
-            document.getElementById("explorer").style.display = collapsed ? "none" : "grid";
+            toggleExplorer(collapsed);
             this.textView.classList[collapsed ? "add" : "remove"]("text-view-max");
         },
         get textViews() {
@@ -76,6 +89,9 @@
         },
         get navCollapseButton() {
             return document.getElementById("nav-burger");
+        },
+        get shouldUseCompatibilityMode() {
+            return /^((?!chrome|android).)*safari/i.test(navigator.userAgent);
         }
     };
     window.MimicoShell = suite;
