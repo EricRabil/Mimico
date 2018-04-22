@@ -16,12 +16,12 @@
                 <img class="sidebar-icon-inner" src="images/list.svg" />
             </a>
         </div>
-        <div class="explorer">
+        <div class="explorer" id="explorer">
             <!-- Navigation Bar -->
             <div class="explorer-title">
                 EXPLORER
             </div>
-            <ul class="explorer-list" id="explorer">
+            <ul class="explorer-list" id="explorer-items">
                 <li class="explorer-item secondary-active" data-page-target="tv-home">
                     <img class="explorer-item-image" src="images/md.svg"/> Home.md
                 </li>
@@ -29,17 +29,20 @@
                     <img class="explorer-item-image" src="images/md.svg"/> Code.md
                 </li>
             </ul>
-            <div class="explorer-credits">
+            <div class="credits">
                 <a href="https://github.com/EricRabil/Mimico">Made by Eric Rabil</a>
             </div>
         </div>
-        <div class="text-view">
+        <div class="text-view" id="text-view">
             <!-- Responsible for text rendering -->
             <div class="text-view-title">
-                <span class="text-view-title-inner text-view-title-inner-active">
-                    <img class="text-view-title-image" src="images/md.svg" />
-                    <span id="tvt-wrap">Home.md</span>
+                <span>
+                    <span class="text-view-title-inner text-view-title-inner-active">
+                        <img class="text-view-title-image" src="images/md.svg" />
+                        <span id="tvt-wrap">Home.md</span>
+                    </span>
                 </span>
+                <img id="nav-burger" class="nav-burger" src="images/burger.svg"/>
             </div>
             <div class="text-view-inner" name="text-view" id="tv-home">
                 
