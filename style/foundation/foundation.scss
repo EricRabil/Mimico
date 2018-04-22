@@ -1,0 +1,83 @@
+@import "./colors.scss";
+
+body {
+    margin: 0px;
+    display: inline;
+}
+
+.base {
+   font-family: 'Open Sans', sans-serif;
+}
+
+.grid {
+    @extend .base;
+    display: grid;
+}
+
+.h-max {
+    @extend .base;
+    height: 100%;
+}
+
+.w-max {
+    @extend .base;
+    width: 100%;
+}
+
+.hw-max {
+    @extend .base, .h-max, .w-max;
+}
+
+.label {
+    @extend .base;
+    text-transform: uppercase;
+}
+
+.title {
+    @extend .label, .base;
+    margin: 12.5px 20px;
+}
+
+.active {
+    background-color: map-get($colors, primary-active);
+}
+
+.secondary-active {
+    background-color: map-get($colors, secondary-active);
+}
+
+.tertiary {
+    background-color: map-get($colors, tertiary);
+}
+
+.tertiary-active {
+    background-color: map-get($colors, tertiary-active);
+}
+
+.quaternary-active {
+    background-color: map-get($colors, quaternary-active);
+}
+
+ul {
+    @extend .base;
+    list-style-type: none;
+}
+
+.image-fix {
+    vertical-align: text-top;
+}
+
+.noselect {
+    -webkit-touch-callout: none; /* iOS Safari */
+      -webkit-user-select: none; /* Safari */
+       -khtml-user-select: none; /* Konqueror HTML */
+         -moz-user-select: none; /* Firefox */
+          -ms-user-select: none; /* Internet Explorer/Edge */
+              user-select: none; /* Non-prefixed version, currently
+                                    supported by Chrome and Opera */
+    cursor: default;
+  }
+
+.monospace {
+    font-family: 'IBM Plex Mono', monospace;
+}

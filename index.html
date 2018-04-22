@@ -1,0 +1,60 @@
+<!DOCTYPE HTML>
+<html>
+
+<head>
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=IBM+Plex+Mono" rel="stylesheet">
+    <link rel="stylesheet" href="style/style.css">
+</head>
+
+<body>
+    <div class="root-container">
+        <div class="sidebar">
+            <!-- The projects sidebar -->
+            <a class="sidebar-icon">
+                <img class="sidebar-icon-inner" src="images/list.svg" />
+            </a>
+        </div>
+        <div class="explorer">
+            <!-- Navigation Bar -->
+            <div class="explorer-title">
+                EXPLORER
+            </div>
+            <ul class="explorer-list" id="explorer">
+                <li class="explorer-item secondary-active" data-page-target="tv-html">
+                    <img class="explorer-item-image" src="images/md.svg"/> Home.md
+                </li>
+                <li class="explorer-item" data-page-target="tv-code">
+                    <img class="explorer-item-image" src="images/md.svg"/> Code.md
+                </li>
+            </ul>
+            <div class="explorer-credits">
+                <a href="https://github.com/EricRabil/Mimico">Made by Eric Rabil</a>
+            </div>
+        </div>
+        <div class="text-view">
+            <!-- Responsible for text rendering -->
+            <div class="text-view-title">
+                <span class="text-view-title-inner text-view-title-inner-active">
+                    <img class="text-view-title-image" src="images/md.svg" />
+                    <span id="tvt-wrap">Home.md</span>
+                </span>
+            </div>
+            <div class="text-view-inner" name="text-view" id="tv-html">
+                hello
+            </div>
+            <div class="text-view-inner" name="text-view" id="tv-code" style="display: none">
+                <div class="text-view-line-count">
+                    <span>1</span>
+                    <span>2</span>
+                </div>
+                <div class="text-view-text">
+                    Hello!
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="scripts/site.js"></script>
+</body>
+
+</html>

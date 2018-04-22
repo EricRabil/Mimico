@@ -1,0 +1,106 @@
+@import "./foundation/foundation";
+$sidebar-width: 50px;
+
+.root-container {
+    @extend .grid, .hw-max;
+    // fills the screen
+    position: fixed;
+    // icon, explorer and main view widths
+    grid-template-columns: $sidebar-width 300px auto;
+}
+
+.root-grid-item {
+    background: black;
+    color: white;
+}
+
+.sidebar {
+    @extend .root-grid-item, .noselect;
+    background-color: map-get($colors, primary);
+    & > .sidebar-icon {
+        $sidebar-icon-padding: 10px;
+        cursor: pointer;
+        width: auto;
+        height: auto;
+        & > img.sidebar-icon-inner {
+            padding: $sidebar-icon-padding;
+            width: $sidebar-width - ($sidebar-icon-padding * 2);
+            height: auto;
+        }
+    }
+}
+
+.explorer {
+    @extend .root-grid-item, .noselect, .grid;
+    background-color: map-get($colors, secondary);
+    grid-template-rows: 43px auto 50px;
+    & > .explorer-title {
+        @extend .title;
+        font-size: 13px;
+    }
+    & > ul.explorer-list {
+        margin: 0;
+        padding: 0;
+        & > li.explorer-item {
+            padding: 5px 30px;
+            font-size: 13px;
+            cursor: pointer;
+            & > .explorer-item-image {
+                @extend .image-fix;
+                height: 16px;
+            }
+            &:hover {
+                @extend .secondary-active;
+            }
+        }
+    }
+    & > .explorer-credits {
+        @extend .title, .monospace;
+        color: darkgray;
+        & > a {
+            text-decoration: none;
+            color: darkgray;
+            &:hover {
+                color: lightgray;
+            }
+        }
+    }
+}
+
+.text-view {
+    @extend .root-grid-item, .grid;
+    background-color: map-get($colors, tertiary);
+    grid-template-rows: 40px auto;
+    & > .text-view-title {
+        @extend .noselect;
+        font-size: 13px;
+        display: inline;
+        background-color: map-get($colors, secondary);
+        & > .text-view-title-inner {
+            // when not selected
+            background-color: map-get($colors, tertiary-active);
+            padding: 11px 12px;
+            display: inline-block;
+            & > img.text-view-title-image {
+                @extend .image-fix;
+                height: 16px;
+            }
+        }
+        & > .text-view-title-inner.text-view-title-inner-active {
+            @extend .tertiary;
+        }
+    }
+    & > .text-view-inner {
+        @extend .grid, .monospace;
+        grid-template-columns: 50px auto;
+        & > .text-view-line-count {
+            @extend .noselect;
+            & > span {
+                color: darkgray;
+                display: block;
+                text-align: right;
+                padding-right: 10px;
+            }
+        }
+    }
+}

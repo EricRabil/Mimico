@@ -1,0 +1,13 @@
+$_base: #333333;
+$_active-base: mix(lighten(purple, 67.5), $_base, 10%);
+
+$colors: (
+    primary: $_base,
+    primary-active: $_active-base,
+    secondary: darken($_base, 5),
+    secondary-active: darken($_active-base, 5),
+    tertiary: darken($_base, 10),
+    tertiary-active: darken($_active-base, 10),
+    quaternary: darken($_base, 15),
+    quaternary-active: darken($_active-base, 15)
+)

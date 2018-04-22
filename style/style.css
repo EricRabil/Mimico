@@ -1,0 +1,122 @@
+body {
+  margin: 0px;
+  display: inline; }
+
+.base, .grid, .root-container, .explorer, .text-view, .text-view > .text-view-inner, .h-max, .hw-max, .w-max, .label, .title, .explorer > .explorer-title, .explorer > .explorer-credits, ul {
+  font-family: 'Open Sans', sans-serif; }
+
+.grid, .root-container, .explorer, .text-view, .text-view > .text-view-inner {
+  display: grid; }
+
+.h-max, .hw-max, .root-container {
+  height: 100%; }
+
+.w-max, .hw-max, .root-container {
+  width: 100%; }
+
+.label, .title, .explorer > .explorer-title, .explorer > .explorer-credits {
+  text-transform: uppercase; }
+
+.title, .explorer > .explorer-title, .explorer > .explorer-credits {
+  margin: 12.5px 20px; }
+
+.active {
+  background-color: #474447; }
+
+.secondary-active, .explorer > ul.explorer-list > li.explorer-item:hover {
+  background-color: #3a383a; }
+
+.tertiary, .text-view > .text-view-title > .text-view-title-inner.text-view-title-inner-active {
+  background-color: #1a1a1a; }
+
+.tertiary-active {
+  background-color: #2d2b2d; }
+
+.quaternary-active {
+  background-color: #201f20; }
+
+ul {
+  list-style-type: none; }
+
+.image-fix, .explorer > ul.explorer-list > li.explorer-item > .explorer-item-image, .text-view > .text-view-title > .text-view-title-inner > img.text-view-title-image {
+  vertical-align: text-top; }
+
+.noselect, .sidebar, .explorer, .text-view > .text-view-title, .text-view > .text-view-inner > .text-view-line-count {
+  -webkit-touch-callout: none;
+  /* iOS Safari */
+  -webkit-user-select: none;
+  /* Safari */
+  /* Konqueror HTML */
+  -moz-user-select: none;
+  /* Firefox */
+  -ms-user-select: none;
+  /* Internet Explorer/Edge */
+  user-select: none;
+  /* Non-prefixed version, currently
+     supported by Chrome and Opera */
+  cursor: default; }
+
+.monospace, .explorer > .explorer-credits, .text-view > .text-view-inner {
+  font-family: 'IBM Plex Mono', monospace; }
+
+.root-container {
+  position: fixed;
+  grid-template-columns: 50px 300px auto; }
+
+.root-grid-item, .sidebar, .explorer, .text-view {
+  background: black;
+  color: white; }
+
+.sidebar {
+  background-color: #333333; }
+  .sidebar > .sidebar-icon {
+    cursor: pointer;
+    width: auto;
+    height: auto; }
+    .sidebar > .sidebar-icon > img.sidebar-icon-inner {
+      padding: 10px;
+      width: 30px;
+      height: auto; }
+
+.explorer {
+  background-color: #262626;
+  grid-template-rows: 43px auto 50px; }
+  .explorer > .explorer-title {
+    font-size: 13px; }
+  .explorer > ul.explorer-list {
+    margin: 0;
+    padding: 0; }
+    .explorer > ul.explorer-list > li.explorer-item {
+      padding: 5px 30px;
+      font-size: 13px;
+      cursor: pointer; }
+      .explorer > ul.explorer-list > li.explorer-item > .explorer-item-image {
+        height: 16px; }
+  .explorer > .explorer-credits {
+    color: darkgray; }
+    .explorer > .explorer-credits > a {
+      text-decoration: none;
+      color: darkgray; }
+      .explorer > .explorer-credits > a:hover {
+        color: lightgray; }
+
+.text-view {
+  background-color: #1a1a1a;
+  grid-template-rows: 40px auto; }
+  .text-view > .text-view-title {
+    font-size: 13px;
+    display: inline;
+    background-color: #262626; }
+    .text-view > .text-view-title > .text-view-title-inner {
+      background-color: #2d2b2d;
+      padding: 11px 12px;
+      display: inline-block; }
+      .text-view > .text-view-title > .text-view-title-inner > img.text-view-title-image {
+        height: 16px; }
+  .text-view > .text-view-inner {
+    grid-template-columns: 50px auto; }
+    .text-view > .text-view-inner > .text-view-line-count > span {
+      color: darkgray;
+      display: block;
+      text-align: right;
+      padding-right: 10px; }
