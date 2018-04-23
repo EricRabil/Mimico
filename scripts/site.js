@@ -15,6 +15,7 @@
     const toggleExplorer = (hidden) => document.getElementById("explorer").style.display = hidden ? "none" : "grid";
     let hiddenResponsiveState = false;
     let didRunCompatibilityModeForSession = false;
+    let didDoInitialNavbarClose = false;
     const suite = {
         /**
          * Switch to a given page
@@ -45,25 +46,32 @@
                 this.navIsCollapsed = !this.navIsCollapsed;
                 hiddenResponsiveState = this.navIsCollapsed;
             });
-            window.addEventListener("resize", () => {
-                if (this.viewportWidth >= 750) {
-                    if (this.navIsCollapsed) {
-                        this.navIsCollapsed = false;
-                    }
-                    didRunCompatibilityModeForSession = false;
+            window.addEventListener("resize", () => this.reflow());
+            this.reflow();
+        },
+        reflow() {
+            if (this.viewportWidth >= 750) {
+                if (this.navIsCollapsed) {
+                    this.navIsCollapsed = false;
                 }
-                if (!this.navIsCollapsed && this.viewportWidth < 750) {
-                    if (hiddenResponsiveState) {
-                        this.navIsCollapsed = true;
-                    }
-                    if (this.shouldUseCompatibilityMode && !didRunCompatibilityModeForSession) {
-                        console.debug("Running compatibility reflow");
-                        this.navIsCollapsed = !this.navIsCollapsed;
-                        setTimeout(() => this.navIsCollapsed = !this.navIsCollapsed, 0);
-                        didRunCompatibilityModeForSession = true;
-                    }
+                didRunCompatibilityModeForSession = false;
+                didDoInitialNavbarClose = false;
+            }
+            if (!this.navIsCollapsed && this.viewportWidth < 750) {
+                if (!didDoInitialNavbarClose) {
+                    this.navIsCollapsed = true;
+                    didDoInitialNavbarClose = true;
                 }
-            });
+                if (hiddenResponsiveState) {
+                    this.navIsCollapsed = true;
+                }
+                if (this.shouldUseCompatibilityMode && !didRunCompatibilityModeForSession) {
+                    console.debug("Running compatibility reflow");
+                    this.navIsCollapsed = !this.navIsCollapsed;
+                    setTimeout(() => this.navIsCollapsed = !this.navIsCollapsed, 0);
+                    didRunCompatibilityModeForSession = true;
+                }
+            }
         },
         get navIsCollapsed() {
             return document.getElementById("explorer").style.display === "none";
