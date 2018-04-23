@@ -15,8 +15,8 @@
     }
 }
 
-div {
     overflow: scroll;
+    -webkit-overflow-scrolling: touch;
 }
 
 .text-view-inner hr {
@@ -46,6 +46,12 @@ div {
 .text-view-inner a {
     color: darkgray;
     text-decoration: none;
+    &:hover {
+        color: lightgray;
+    }
+    &:active {
+        color: lighten(lightgray, 10);
+    }
 }
 
 .code {
