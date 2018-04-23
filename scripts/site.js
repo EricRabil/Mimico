@@ -1,3 +1,17 @@
+if (!Array.from) {
+    Array.from = (array) => {
+        const newArray = [];
+        for (let i = 0; i < array.length; i++) {
+            newArray.push(array[i]);
+        }
+        return newArray;
+    };
+}
+const _has_grid = CSS.supports("display", "grid");
+const _display_mode = _has_grid ? "grid" : "flex";
+if (!_has_grid) {
+    document.body.classList.add("no-grid");
+}
 (() => {
     const resetPageView = () => {
         for (let view of suite.textViews) {
@@ -12,7 +26,7 @@
     const resetResponsiveNav = () => {
         suite.navIsCollapsed = suite.viewportWidth < 750;
     }
-    const toggleExplorer = (hidden) => document.getElementById("explorer").style.display = hidden ? "none" : "grid";
+    const toggleExplorer = (hidden) => document.getElementById("explorer").style.display = hidden ? "none" : _display_mode;
     let hiddenResponsiveState = false;
     let didRunCompatibilityModeForSession = false;
     let didDoInitialNavbarClose = false;
@@ -23,7 +37,7 @@
          */
         display(page) {
             resetPageView();
-            document.getElementById(page).style.display = "grid";
+            document.getElementById(page).style.display = _display_mode;
         },
         /**
          * Display a page using a navbar element

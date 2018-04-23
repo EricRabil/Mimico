@@ -8,6 +8,9 @@ $explorer-width: 300px;
     position: fixed;
     // icon, explorer and main view widths
     grid-template-columns: $sidebar-width $explorer-width auto;
+    .no-grid & {
+        flex-flow: row;
+    }
 }
 
 .root-grid-item {
@@ -45,11 +48,18 @@ $explorer-width: 300px;
     .root-container {
         grid-template-columns: auto;
         grid-template-rows: min-content auto;
+        .no-grid & {
+            flex-flow: column;
+        }
     }
 
     .explorer {
+        height: intrinsic;
         height: min-content;
         grid-template-rows: 43px auto !important;
+        .no-grid & {
+            height: auto !important;
+        }
     }
 
     .text-view-line-count {
@@ -90,6 +100,9 @@ $explorer-width: 300px;
             color: rgba(255, 255, 255, 1.0);
         }
     }
+    .no-grid & {
+        margin-top: auto;
+    }
 }
 
 .nav-burger:hover {
@@ -100,6 +113,12 @@ $explorer-width: 300px;
     @extend .root-grid-item, .noselect, .grid;
     background-color: map-get($colors, secondary);
     grid-template-rows: 43px auto 50px;
+    .no-grid & {
+        display: flex;
+        flex-flow: column;
+        height: 100%;
+        min-width: 225px;
+    }
     & > .explorer-title {
         @extend .title;
         font-size: 13px;
@@ -128,6 +147,10 @@ $explorer-width: 300px;
     @extend .root-grid-item, .grid;
     background-color: map-get($colors, tertiary);
     grid-template-rows: 40px auto;
+    .no-grid & {
+        display: flex;
+        flex-flow: column;
+    }
     &.text-view-max {
         grid-row: 1 / 3;
     }
@@ -151,6 +174,9 @@ $explorer-width: 300px;
         }
         & .text-view-title-inner.text-view-title-inner-active {
             @extend .tertiary;
+        }
+        .no-grid & {
+            width: 100%;
         }
     }
     // actual content

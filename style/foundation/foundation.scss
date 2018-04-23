@@ -12,6 +12,9 @@ body {
 .grid {
     @extend .base;
     display: grid;
+    .no-grid & {
+        display: flex;
+    }
 }
 
 .h-max {
