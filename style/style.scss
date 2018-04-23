@@ -49,6 +49,7 @@ $explorer-width: 300px;
         grid-template-columns: auto;
         grid-template-rows: min-content auto;
         overflow-y: scroll;
+        -webkit-overflow-scrolling: touch;
         .no-grid & {
             flex-flow: column;
         }
