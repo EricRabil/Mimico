@@ -1,7 +1,78 @@
 @import "./foundation/foundation";
 
-div.text-view-inner {
-    &#tv-home {
-        @extend .grid;
+.er-home-title {
+    font-size: 36px;
+    text-align: center;
+    color: greenyellow;
+    margin: 0 5px;
+    &.subtitle {
+        font-size: 18px;
     }
+    &.smaller-subtitle {
+        font-size: 14px;
+    }
+    &.hint {
+        font-size: 10px;
+    }
+}
+
+.root-container, .text-view, .text-view-inner, .text-view-text {
+    overflow: scroll;
+    -webkit-overflow-scrolling: touch;
+}
+
+.text-view-inner hr {
+    border: 1px solid map-get($colors, tertiary-active);
+}
+
+.text-view-inner ul {
+    @extend .monospace;
+    padding: 0;
+    text-align: center;
+    list-style-type: none;
+    & > li.flagged {
+        color: darken(white, 20);
+    }
+}
+
+.text-view-inner {
+    padding-bottom: 20px;
+}
+
+.text-view-inner p:not(.er-home-title) {
+    text-align: center;
+    margin: 0 20px;
+    word-wrap: break-word;
+    @media(max-width: 749px) {
+        font-size: 12px;
+    }
+}
+
+.text-view-inner a {
+    color: darkgray;
+    text-decoration: none;
+    &:hover {
+        color: lightgray;
+    }
+    &:active {
+        color: lighten(lightgray, 10);
+    }
+}
+
+.code {
+    white-space: pre;
+    background-color: map-get($colors, tertiary-active);
+    width: -moz-min-content;
+    width: intrinsic;
+    width: min-content;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 5px;
+    border: 1px solid map-get($colors, secondary-active);
+}
+
+::-webkit-scrollbar {
+    width: 0px;  /* remove scrollbar space */
+    height: 0px;
+    background: transparent;  /* optional: just make scrollbar invisible */
 }
