@@ -23,7 +23,7 @@
     <meta name='apple-mobile-web-app-status-bar-style' content='black'>
 </head>
 
-<body>
+<body class="no-grid">
     <div class="root-container">
         <div class="sidebar">
             <!-- The projects sidebar -->
@@ -117,6 +117,11 @@
             </div>
         </div>
     </div>
+    <script>
+        if (CSS.supports("display", "grid")) {
+            document.body.classList.remove("no-grid");
+        }
+    </script>
     <script src="scripts/site.js"></script>
 </body>
 

@@ -9,9 +9,6 @@ if (!Array.from) {
 }
 const _has_grid = CSS.supports("display", "grid");
 const _display_mode = _has_grid ? "grid" : "flex";
-if (!_has_grid) {
-    document.body.classList.add("no-grid");
-}
 (() => {
     const resetPageView = () => {
         for (let view of suite.textViews) {
