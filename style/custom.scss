@@ -42,6 +42,9 @@
     text-align: center;
     margin: 0 20px;
     word-wrap: break-word;
+    @media(max-width: 749px) {
+        font-size: 12px;
+    }
 }
 
 .text-view-inner a {
