@@ -63,6 +63,7 @@
     white-space: pre;
     background-color: map-get($colors, tertiary-active);
     width: -moz-min-content;
+    width: intrinsic;
     width: min-content;
     margin: 20px auto;
     padding: 10px;
