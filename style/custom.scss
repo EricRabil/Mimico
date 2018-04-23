@@ -16,8 +16,8 @@
     }
 }
 
-.root-container, .text-view, .text-view-inner, .text-view-text {
-    overflow: scroll;
+.text-view {
+    overflow-y: scroll;
     -webkit-overflow-scrolling: touch;
 }
 
