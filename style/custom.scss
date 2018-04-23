@@ -59,12 +59,20 @@
     }
 }
 
-.code {
-    white-space: pre;
-    background-color: map-get($colors, tertiary-active);
+@mixin intrinsic-width($fallback) {
+    width: $fallback;
     width: -moz-min-content;
     width: intrinsic;
     width: min-content;
+}
+
+.code {
+    white-space: pre;
+    background-color: map-get($colors, tertiary-active);
+    &.social-media {
+        @include intrinsic-width(250px);
+    }
+    @include intrinsic-width(100%);
     margin: 20px auto;
     padding: 10px;
     border-radius: 5px;
